@@ -2,5 +2,16 @@ body {
   background-image:url("img/jeuxpaires.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
 
+aside {
+  height: 100vh;
+}
+
+.carte {
+  background-color: black;
+  height: 160px;
+  width: 110px;
+  margin-top: 1em;
+  border-radius: 0.5em;
 }
