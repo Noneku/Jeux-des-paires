@@ -1,5 +1,5 @@
 //Variables
-var content = document.getElementById('Content');
+let content = document.getElementById('Content');
 
 let cards = [
   "red",
@@ -15,6 +15,8 @@ let cards = [
   "purple",
   "purple"
 ];
+
+let choice = [];
 //Function
 
 //Randomize array
@@ -28,13 +30,22 @@ function makeCard() {
   card.classList.add("carte");
   return card;
 }
-
-function eventClick(value, color){
+//Event CLick
+function eventClick(value, color, choice){
   value.onclick = function() {
     value.style.background = color;
+    choice.push(value);
+    if (choice.length === 2) {
+      if(choice[0].style.background != choice[1].style.background){
+        setTimeout(function(){
+          choice[0].style.background = 'black';
+          choice[1].style.background = 'black';
+          choice.length = 0;
+        }, 1000);
+      }
+    }
   }
 }
-
 //Add cards on board game
 function showCards() {
     for (var i = 0; i < cards.length; i++) {
@@ -42,7 +53,7 @@ function showCards() {
       //Create childs of content
       content.appendChild(card);
       //Add event
-      eventClick(card, cards[i]);
+      eventClick(card, cards[i], choice);
     }
 }
 //Sort randome cards
