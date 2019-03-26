@@ -1,5 +1,7 @@
-//Variables
-var content = document.getElementById('Content');
+
+//////////*****************VALUES*****************//////////
+
+let content = document.getElementById('Content');
 
 let cards = [
   "red",
@@ -15,7 +17,14 @@ let cards = [
   "purple",
   "purple"
 ];
-//Function
+//Array for compare cards
+let compareChoice = [];
+//Array with cards pair
+let pairs = [];
+
+//////////*****************VALUES*****************//////////
+
+//////////*****************FUNCTIONS*****************//////////
 
 //Randomize array
 function randomize(array){
@@ -28,13 +37,15 @@ function makeCard() {
   card.classList.add("carte");
   return card;
 }
-
-function eventClick(value, color){
+//Event CLick
+function eventClick(value, color, compareChoice){
   value.onclick = function() {
     value.style.background = color;
+    compareChoice.push(value);
+    //Compare two card in Array compareChoice
+    compareColor(compareChoice);
   }
 }
-
 //Add cards on board game
 function showCards() {
     for (var i = 0; i < cards.length; i++) {
@@ -42,11 +53,47 @@ function showCards() {
       //Create childs of content
       content.appendChild(card);
       //Add event
-      eventClick(card, cards[i]);
+      eventClick(card, cards[i], compareChoice);
     }
 }
+
+//Compare 2 card background
+function compareColor(compareChoice) {
+  if (compareChoice.length === 2) {
+    if(compareChoice[0].style.background != compareChoice[1].style.background){
+      setTimeout(function(){
+        compareChoice[0].style.background = 'black';
+        compareChoice[1].style.background = 'black';
+        compareChoice.length = 0;
+      }, 1000);
+    }
+    else
+    {
+      pairs.push(compareChoice[0], compareChoice[1]);
+      checkFinishGame(pairs);
+      compareChoice.length = 0;
+    }
+  }
+}
+//Check if all pairs are finded
+function checkFinishGame(pairs){
+  if(pairs.length === 12){
+    setTimeout(function(){
+      location.reload();
+    }, 1500);
+    alert('Bien joué');
+  }
+}
+
+//////////*****************FUNCTIONS*****************//////////
+
+
+//////////*****************LOGIC CODE*****************//////////
+
 //Sort randome cards
 cards = randomize(cards);
 
 //Display Cards
 showCards();
+
+//////////*****************LOGIC CODE*****************//////////
