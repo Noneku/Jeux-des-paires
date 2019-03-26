@@ -29,7 +29,8 @@ let pairs = [];
 //Start game
 function start(){
   let startContent = document.getElementById('Start').style.display = 'none';
-  //Sort randome cards
+  content.style.display = 'flex';
+ //Sort randome cards
   cards = randomize(cards);
 
   //Display Cards
