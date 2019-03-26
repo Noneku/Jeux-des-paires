@@ -65,14 +65,16 @@ function compareColor(choice) {
     else
     {
       pairs.push(choice[0], choice[1]);
+      checkFinishGame(pairs);
       choice.length = 0;
-      console.log(pairs);
     }
   }
 }
 //Check if all pairs are finded
 function checkFinishGame(pairs){
-  
+  if(pairs.length === 12){
+    alert('Bien joué, tu as fini');
+  }
 }
 //Sort randome cards
 cards = randomize(cards);
