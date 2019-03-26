@@ -15,8 +15,10 @@ let cards = [
   "purple",
   "purple"
 ];
-
+//Array for compare cards
 let choice = [];
+//Array with cards pair
+let pairs = [];
 //Function
 
 //Randomize array
@@ -35,15 +37,8 @@ function eventClick(value, color, choice){
   value.onclick = function() {
     value.style.background = color;
     choice.push(value);
-    if (choice.length === 2) {
-      if(choice[0].style.background != choice[1].style.background){
-        setTimeout(function(){
-          choice[0].style.background = 'black';
-          choice[1].style.background = 'black';
-          choice.length = 0;
-        }, 1000);
-      }
-    }
+    //Compare two card in Array choice
+    compareColor(choice);
   }
 }
 //Add cards on board game
@@ -55,6 +50,29 @@ function showCards() {
       //Add event
       eventClick(card, cards[i], choice);
     }
+}
+
+//Compare 2 card background
+function compareColor(choice) {
+  if (choice.length === 2) {
+    if(choice[0].style.background != choice[1].style.background){
+      setTimeout(function(){
+        choice[0].style.background = 'black';
+        choice[1].style.background = 'black';
+        choice.length = 0;
+      }, 1000);
+    }
+    else
+    {
+      pairs.push(choice[0], choice[1]);
+      choice.length = 0;
+      console.log(pairs);
+    }
+  }
+}
+//Check if all pairs are finded
+function checkFinishGame(pairs){
+  
 }
 //Sort randome cards
 cards = randomize(cards);
