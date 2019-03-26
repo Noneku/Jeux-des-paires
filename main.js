@@ -65,7 +65,7 @@ function compareColor(compareChoice) {
         compareChoice[0].style.background = 'black';
         compareChoice[1].style.background = 'black';
         compareChoice.length = 0;
-      }, 1000);
+      }, 700);
     }
     else
     {

@@ -8,6 +8,10 @@ aside {
   height: 100vh;
 }
 
+.tableDeJeux {
+  width: 48em;
+}
+
 .carte {
   background-color: black;
   height: 160px;
