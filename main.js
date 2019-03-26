@@ -26,6 +26,16 @@ let pairs = [];
 
 //////////*****************FUNCTIONS*****************//////////
 
+//Start game
+function start(){
+  let startContent = document.getElementById('Start').style.display = 'none';
+  //Sort randome cards
+  cards = randomize(cards);
+
+  //Display Cards
+  showCards();
+
+}
 //Randomize array
 function randomize(array){
   return array.sort(function(a, b){return 0.5 - Math.random()});
@@ -90,10 +100,5 @@ function checkFinishGame(pairs){
 
 //////////*****************LOGIC CODE*****************//////////
 
-//Sort randome cards
-cards = randomize(cards);
-
-//Display Cards
-showCards();
 
 //////////*****************LOGIC CODE*****************//////////
