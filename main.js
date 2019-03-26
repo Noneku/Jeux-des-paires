@@ -1,4 +1,6 @@
-//Variables
+
+//////////*****************VALUES*****************//////////
+
 let content = document.getElementById('Content');
 
 let cards = [
@@ -16,10 +18,13 @@ let cards = [
   "purple"
 ];
 //Array for compare cards
-let choice = [];
+let compareChoice = [];
 //Array with cards pair
 let pairs = [];
-//Function
+
+//////////*****************VALUES*****************//////////
+
+//////////*****************FUNCTIONS*****************//////////
 
 //Randomize array
 function randomize(array){
@@ -33,12 +38,12 @@ function makeCard() {
   return card;
 }
 //Event CLick
-function eventClick(value, color, choice){
+function eventClick(value, color, compareChoice){
   value.onclick = function() {
     value.style.background = color;
-    choice.push(value);
-    //Compare two card in Array choice
-    compareColor(choice);
+    compareChoice.push(value);
+    //Compare two card in Array compareChoice
+    compareColor(compareChoice);
   }
 }
 //Add cards on board game
@@ -48,36 +53,47 @@ function showCards() {
       //Create childs of content
       content.appendChild(card);
       //Add event
-      eventClick(card, cards[i], choice);
+      eventClick(card, cards[i], compareChoice);
     }
 }
 
 //Compare 2 card background
-function compareColor(choice) {
-  if (choice.length === 2) {
-    if(choice[0].style.background != choice[1].style.background){
+function compareColor(compareChoice) {
+  if (compareChoice.length === 2) {
+    if(compareChoice[0].style.background != compareChoice[1].style.background){
       setTimeout(function(){
-        choice[0].style.background = 'black';
-        choice[1].style.background = 'black';
-        choice.length = 0;
+        compareChoice[0].style.background = 'black';
+        compareChoice[1].style.background = 'black';
+        compareChoice.length = 0;
       }, 1000);
     }
     else
     {
-      pairs.push(choice[0], choice[1]);
+      pairs.push(compareChoice[0], compareChoice[1]);
       checkFinishGame(pairs);
-      choice.length = 0;
+      compareChoice.length = 0;
     }
   }
 }
 //Check if all pairs are finded
 function checkFinishGame(pairs){
   if(pairs.length === 12){
-    alert('Bien joué, tu as fini');
+    setTimeout(function(){
+      location.reload();
+    }, 1500);
+    alert('Bien joué');
   }
 }
+
+//////////*****************FUNCTIONS*****************//////////
+
+
+//////////*****************LOGIC CODE*****************//////////
+
 //Sort randome cards
 cards = randomize(cards);
 
 //Display Cards
 showCards();
+
+//////////*****************LOGIC CODE*****************//////////
