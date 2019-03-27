@@ -8,6 +8,9 @@ aside {
   height: 100vh;
 }
 
+.margin{
+  margin-bottom: 15em;
+}
 .tableDeJeux {
   width: 48em;
 }

@@ -52,10 +52,16 @@ function makeCard() {
 //Event CLick
 function eventClick(value, color, compareChoice){
   value.onclick = function() {
-    value.style.background = color;
-    compareChoice.push(value);
-    //Compare two card in Array compareChoice
-    compareColor(compareChoice);
+    if(value.style.background = 'black'){
+      value.style.background = color;
+      compareChoice.push(value);
+      //Compare two card in Array compareChoice
+      compareColor(compareChoice);
+    }
+    else {
+      compareChoice.length = 0;
+
+    }
   }
 }
 
