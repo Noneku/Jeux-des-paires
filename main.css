@@ -1,6 +1,31 @@
-body {
-  background-image:url("img/jeuxpaires.jpg");
+.bg-image {
+  background-image: url("img/jeuxcarte.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
 
+aside {
+  height: 100vh;
+}
+
+.none{
+  display: none;
+}
+.backblack{
+  background-color: black;
+}
+
+.margin{
+  margin-bottom: 15em;
+}
+
+.tableDeJeux {
+  width: 48em;
+}
+
+.carte {
+  height: 160px;
+  width: 110px;
+  margin-top: 1em;
+  border-radius: 0.5em;
 }
