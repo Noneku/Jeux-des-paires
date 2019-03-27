@@ -29,14 +29,14 @@ let pairs = [];
 //Start game
 function start(){
   let startContent = document.getElementById('Start').style.display = 'none';
+  let bgImage = document.getElementById('bg.image').style.backgroundImage = "url('img/jeuxpaires.jpg')";
   content.style.display = 'flex';
- //Sort randome cards
+  //Sort randome cards
   cards = randomize(cards);
-
   //Display Cards
   showCards();
-
 }
+
 //Randomize array
 function randomize(array){
   return array.sort(function(a, b){return 0.5 - Math.random()});
@@ -48,6 +48,7 @@ function makeCard() {
   card.classList.add("carte");
   return card;
 }
+
 //Event CLick
 function eventClick(value, color, compareChoice){
   value.onclick = function() {
@@ -57,6 +58,7 @@ function eventClick(value, color, compareChoice){
     compareColor(compareChoice);
   }
 }
+
 //Add cards on board game
 function showCards() {
     for (var i = 0; i < cards.length; i++) {
@@ -68,8 +70,9 @@ function showCards() {
     }
 }
 
-//Compare 2 card background
+//Compare 2 cards background
 function compareColor(compareChoice) {
+  //Compare if array compareChoice got 2 elements
   if (compareChoice.length === 2) {
     if(compareChoice[0].style.background != compareChoice[1].style.background){
       setTimeout(function(){
