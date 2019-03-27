@@ -2,6 +2,7 @@
 //////////*****************VALUES*****************//////////
 
 let content = document.getElementById('Content');
+let Time = document.getElementById('Time');
 let timer = 30;
 
 let cards = [
@@ -31,6 +32,8 @@ let pairs = [];
 function start(){
   let startContent = document.getElementById('Start').style.display = 'none';
   let bgImage = document.getElementById('bg.image').style.backgroundImage = "url('img/jeuxpaires.jpg')";
+  Time.style.display = 'flex';
+  Time.innerHTML = "<p>Il vous reste :</p>";
   content.style.display = 'flex';
   //Sort randome cards
   cards = randomize(cards);
@@ -54,9 +57,9 @@ function makeCard() {
 //Event CLick
 function eventClick(value, color, compareChoice){
   value.onclick = function() {
-    if(value.style.backgroundColor === 'black'){
-      value.style.background = color;
-      compareChoice.push(value);
+    if(this.style.backgroundColor === 'black'){
+      this.style.background = color;
+      compareChoice.push(this);
       //Compare two card in Array compareChoice
       compareColor(compareChoice);
     }
@@ -104,10 +107,9 @@ function checkFinishGame(pairs){
   }
 }
 
+
 //////////*****************FUNCTIONS*****************//////////
 
-
 //////////*****************LOGIC CODE*****************//////////
-
 
 //////////*****************LOGIC CODE*****************//////////
