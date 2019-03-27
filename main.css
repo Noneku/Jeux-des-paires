@@ -8,6 +8,9 @@ aside {
   height: 100vh;
 }
 
+.none{
+  display: none;
+}
 .backblack{
   background-color: black;
 }
@@ -21,7 +24,6 @@ aside {
 }
 
 .carte {
-  background-color: black;
   height: 160px;
   width: 110px;
   margin-top: 1em;

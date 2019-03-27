@@ -2,6 +2,7 @@
 //////////*****************VALUES*****************//////////
 
 let content = document.getElementById('Content');
+let timer = 30;
 
 let cards = [
   "red",
@@ -46,22 +47,20 @@ function randomize(array){
 function makeCard() {
   var card = document.createElement('div');
   card.classList.add("carte");
+  card.style.backgroundColor = "black";
   return card;
 }
 
 //Event CLick
 function eventClick(value, color, compareChoice){
   value.onclick = function() {
-    if(value.style.background = 'black'){
+    if(value.style.backgroundColor === 'black'){
       value.style.background = color;
       compareChoice.push(value);
       //Compare two card in Array compareChoice
       compareColor(compareChoice);
     }
-    else {
-      compareChoice.length = 0;
-
-    }
+    console.log(compareChoice);
   }
 }
 
@@ -80,10 +79,10 @@ function showCards() {
 function compareColor(compareChoice) {
   //Compare if array compareChoice got 2 elements
   if (compareChoice.length === 2) {
-    if(compareChoice[0].style.background != compareChoice[1].style.background){
+    if(compareChoice[0].style.backgroundColor != compareChoice[1].style.backgroundColor){
       setTimeout(function(){
-        compareChoice[0].style.background = 'black';
-        compareChoice[1].style.background = 'black';
+        compareChoice[0].style.backgroundColor = 'black';
+        compareChoice[1].style.backgroundColor = 'black';
         compareChoice.length = 0;
       }, 700);
     }
