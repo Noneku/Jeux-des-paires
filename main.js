@@ -3,7 +3,6 @@
 
 let content = document.getElementById('Content');
 let Time = document.getElementById('Time');
-let timer = 30;
 
 let cards = [
   "red",
@@ -33,12 +32,13 @@ function start(){
   let startContent = document.getElementById('Start').style.display = 'none';
   let bgImage = document.getElementById('bg.image').style.backgroundImage = "url('img/jeuxpaires.jpg')";
   Time.style.display = 'flex';
-  Time.innerHTML = "<p>Il vous reste :</p>";
   content.style.display = 'flex';
   //Sort randome cards
   cards = randomize(cards);
   //Display Cards
   showCards();
+  //Start timer
+  timer();
 }
 
 //Randomize array
@@ -54,6 +54,24 @@ function makeCard() {
   return card;
 }
 
+function timer(){
+  var timer = 30;
+  Time.innerHTML = timer;
+  Time.style.fontSize = "25px";
+  var content = setInterval(function(){
+    Time.innerHTML = timer--;
+    Time.style.fontSize = "25px";
+    if(timer <= 14){
+      Time.style.fontSize = "45px";
+    }
+    if(timer === -1){
+      clearInterval(content);
+      alert('Vous avez perdu');
+      location.reload();
+    }
+  }, 1000);
+}
+
 //Event CLick
 function eventClick(value, color, compareChoice){
   value.onclick = function() {
@@ -63,7 +81,6 @@ function eventClick(value, color, compareChoice){
       //Compare two card in Array compareChoice
       compareColor(compareChoice);
     }
-    console.log(compareChoice);
   }
 }
 
@@ -111,5 +128,4 @@ function checkFinishGame(pairs){
 //////////*****************FUNCTIONS*****************//////////
 
 //////////*****************LOGIC CODE*****************//////////
-
 //////////*****************LOGIC CODE*****************//////////
